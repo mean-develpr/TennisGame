@@ -26,11 +26,11 @@ $(function () {
       cache: false,
       dataType: "json",
       contentType: "application/json; charset=UTF-8",
-      // Neccesary to mantain cookie session with CORS enabled
+      // Needed to keep cookie session with CORS enabled
       xhrFields: {withCredentials: true},
       success: function (data) {
         $("#message").show();
-        $("#message").html(data.msg)
+        $("#message").html(data.msg);
         // Retrieve the score, which could be return here as well
         score();
       },
@@ -44,8 +44,7 @@ $(function () {
   }
 
   /**
-   * Retrieves the score
-   * @param player
+   * Retrieves the score for the match in session
    */
   function score() {
     $.ajax({
@@ -64,8 +63,8 @@ $(function () {
         }, showMessageSec);
 
         // Fill score for players
-        $("#p0Score").html(data.score.player0)
-        $("#p1Score").html(data.score.player1)
+        $("#p0Score").html(data.score.player0);
+        $("#p1Score").html(data.score.player1);
 
         // Fill sets for players
         let divSet, jsonSet;
@@ -73,11 +72,11 @@ $(function () {
 
           divSet = ("#p0Set" + i);
           jsonSet = data["sets"][i - 1].player0;
-          $(divSet).html(jsonSet)
+          $(divSet).html(jsonSet);
 
           divSet = ("#p1Set" + i);
           jsonSet = data["sets"][i - 1].player1;
-          $(divSet).html(jsonSet)
+          $(divSet).html(jsonSet);
         }
       },
       error: function (xhr, textStatus, errorThrown) {
