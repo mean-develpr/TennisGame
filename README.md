@@ -50,7 +50,9 @@ To retrieve the match in json format.
 
 ### HowTo Start Server
 
-It is straightforward, just as a normal grails application, open grails console and type:
+It is straightforward, but in order to start the serve, you will need to have installed grails in your host. 
+                            
+Then, just as a normal grails application, open grails console and type:
 
     run-app
     
@@ -86,7 +88,5 @@ It stores the match in the session BUT there is no session management implemente
 <!--
     http-server -c-1 -o --cors
 --->
-
-In order to test the app, you will need to have installed grails in your host. 
 
 
