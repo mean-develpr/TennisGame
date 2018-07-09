@@ -48,7 +48,7 @@ To record a point with player 1.
 
 To retrieve the match in json format.
 
-###HowTo Start Server
+### HowTo Start Server
 
 It is straightforward, just as a normal grails application, open grails console and type:
 
@@ -89,5 +89,4 @@ It stores the match in the session BUT there is no session management implemente
 
 In order to test the app, you will need to have installed grails in your host. 
 
-Please, read additional instructions about how to start the client and the server, inside the TennisGameServer/[README.md](https://github.com/mean-develpr/TennisGame/blob/master/TennisGameServer/README.md) and TennisGameClient/[README.md](https://github.com/mean-develpr/TennisGame/blob/master/TennisGameClient/README.md) folders.
 
