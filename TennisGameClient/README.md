@@ -1,5 +1,4 @@
-Description
------------
+# The Client
 
 This is a very simple html client with the following files:
  

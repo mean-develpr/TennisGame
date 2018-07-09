@@ -1,5 +1,4 @@
-Description
------------
+# The Server
 
 This is the server which has the TennisGame API with following urls.
 
@@ -11,8 +10,7 @@ To record a point with player 1.
 
 To retrieve the match in json format.
 
-HowTo Start Server
-------------------
+## HowTo Start Server
 
 It is straightforward, just as a normal grails application, open grails console and type:
 
@@ -28,10 +26,7 @@ You can also test with __curl__ (https://curl.haxx.se/download.html). Here are s
     curl -b "cookie.txt" -c "cookie.txt" -H "Accept: application/json" "localhost:8080/point/1"  | jq .
     curl -b "cookie.txt" -c "cookie.txt" -H "Accept: application/json" "localhost:8080/point/0"  | jq .
     
-
-
-The Logic
----------
+## The Logic
 
 * **TennisGameService**: Here is where all calculations are done. It exposes only one method:
 
@@ -41,11 +36,8 @@ The Logic
 It stores the match in the session BUT there is no session management implemented. 
 
 * **Match**:
-
-
         
-The TODOs
----------
+## The TODOs
 
 * Persistence is not completed
 
@@ -56,3 +48,7 @@ The TODOs
 <!--
     http-server -c-1 -o --cors
 --->
+
+In order to test the app, you will need to have installed grails in your host. 
+
+Please, read additional instructions about how to start the client and the server, inside the TennisGameServer/[README.md](https://github.com/mean-develpr/TennisGame/blob/master/TennisGameServer/README.md) and TennisGameClient/[README.md](https://github.com/mean-develpr/TennisGame/blob/master/TennisGameClient/README.md) folders.
