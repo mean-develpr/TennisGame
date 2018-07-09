@@ -1,4 +1,4 @@
-# TennisGame APP
+
 
 TennisGame is an application to display current score of a tennis game. The application will start showing an empty game, and the user will be able to add a point to a player, showing the resulting score.
 
