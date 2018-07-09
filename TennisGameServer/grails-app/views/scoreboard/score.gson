@@ -1,0 +1,20 @@
+import tennisgame.Match
+
+model {
+    Match match
+}
+
+json {
+    msg match.message
+//    service match.servicePlayer
+//    winner match.winner
+
+    score(
+        player0: match.score[0],
+        player1: match.score[1]
+    )
+    sets match.sets, { Integer[] set ->
+        player0 set[0]
+        player1 set[1]
+    }
+}
