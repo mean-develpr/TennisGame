@@ -1,0 +1,95 @@
+body {
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: large;
+  background-color: white;
+  color: #1ab394;
+}
+
+.table > thead > tr > th {
+  border-bottom: 1px solid #1ab394;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+  padding: 8px;
+  vertical-align: top;
+  text-align: center;
+  /*border: solid;*/
+}
+
+.table > thead tr th:first-child, .table tbody tr td:first-child {
+  width: 25%;
+}
+
+.scoreboard {
+  margin: 10% auto 2em;
+  width: 80%;
+  vertical-align: top;
+  text-align: center;
+}
+
+.btn {
+  border-radius: 50px;
+  font-size: large;
+  display: inline-block
+}
+
+.btn-left {
+  float: left;
+}
+
+.btn-right {
+  float: right;
+}
+
+.btn-primary, .btn-primary:visited {
+  background-color: #1ab394;
+  border-color: #1ab394;
+  color: #FFFFFF;
+}
+
+.btn-primary:hover {
+  background-color: #FFFFFF;
+  border-color: #1ab394;
+  color: #1ab394;
+}
+
+.btn-primary:focus {
+  outline: none;
+}
+
+.btn-primary:active, .btn-primary.active {
+  border-style: outset;
+}
+
+.btn-primary.disabled, .btn-primary.disabled:hover, .btn-primary.disabled:focus, .btn-primary.disabled:active, .btn-primary.disabled.active, .btn-primary[disabled], .btn-primary[disabled]:hover, .btn-primary[disabled]:focus, .btn-primary[disabled]:active, .btn-primary.active[disabled] {
+background-color: #1ab394;
+border-color: #1ab394;
+}
+
+.btn-rounded {
+  border-radius: 50px;
+}
+
+.footer {
+  color: #FFFFFF;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: large;
+  background: none repeat scroll 0 0 #1ab394;
+  border-top: 1px solid #1ab394;
+  bottom: 0;
+  left: 0;
+  padding: 10px 20px;
+  position: absolute;
+  right: 0;
+}
+
+.footer.fixed_full {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 10px 20px;
+  color: white;
+  border-top: 1px solid #1ab394;
+}
