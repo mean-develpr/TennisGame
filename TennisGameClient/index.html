@@ -13,13 +13,13 @@
 <div class="scoreboard">
     <table class="table">
         <thead>
-            <th>&nbsp;</th>
-            <th>SET 1</th>
-            <th>SET 2</th>
-            <th>SET 3</th>
-            <th>SET 4</th>
-            <th>SET 5</th>
-            <th>&nbsp;SCORE&nbsp;</th>
+        <th>&nbsp;</th>
+        <th>SET 1</th>
+        <th>SET 2</th>
+        <th>SET 3</th>
+        <th>SET 4</th>
+        <th>SET 5</th>
+        <th>&nbsp;SCORE&nbsp;</th>
         </thead>
         <tfoot>
         <tr>
@@ -27,35 +27,38 @@
         </tr>
         <tr>
             <td colspan="4">
-                <button class="btn btn-rounded btn-primary btn-left" id="point0">POINT PLAYER 0</button>
+                <button class="btn btn-primary btn-left" id="point0">POINT PLAYER 0</button>
             </td>
             <td colspan="3">
-                <button class="btn btn-rounded btn-primary btn-right" id="point1">POINT PLAYER 1</button>
+                <button class="btn btn-primary btn-right" id="point1">POINT PLAYER 1</button>
             </td>
         </tr>
         </tfoot>
         <tbody>
         <tr>
             <td>PLAYER 0</td>
+            <td id="p0Set0">0</td>
             <td id="p0Set1">0</td>
             <td id="p0Set2">0</td>
             <td id="p0Set3">0</td>
             <td id="p0Set4">0</td>
-            <td id="p0Set5">0</td>
             <td id="p0Score">LOVE</td>
         </tr>
         <tr>
             <td>PLAYER 1</td>
+            <td id="p1Set0">0</td>
             <td id="p1Set1">0</td>
             <td id="p1Set2">0</td>
             <td id="p1Set3">0</td>
             <td id="p1Set4">0</td>
-            <td id="p1Set5">0</td>
             <td id="p1Score">LOVE</td>
         </tr>
         </tbody>
     </table>
     <br>
+    <!--<div>-->
+        <!--<button class="btn btn-primary btn-left" id="reset">NEW MATCH</button>-->
+    <!--</div>-->
 </div>
 <div class="footer fixed_full" id="message">Ready to start the game</div>
 </body>

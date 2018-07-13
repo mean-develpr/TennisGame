@@ -68,14 +68,14 @@ $(function () {
 
         // Fill sets for players
         let divSet, jsonSet;
-        for (let i = 1; i < 6; i++) {
+        for (let i = 0; i < data.sets.length; i++) {
 
           divSet = ("#p0Set" + i);
-          jsonSet = data["sets"][i - 1].player0;
+          jsonSet = data["sets"][i].player0;
           $(divSet).html(jsonSet);
 
           divSet = ("#p1Set" + i);
-          jsonSet = data["sets"][i - 1].player1;
+          jsonSet = data["sets"][i].player1;
           $(divSet).html(jsonSet);
         }
       },

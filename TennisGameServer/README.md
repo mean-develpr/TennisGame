@@ -35,15 +35,23 @@ You can also test with __curl__ (https://curl.haxx.se/download.html). Here are s
 * **ScoreboardController**: Very simple controller, delegates logic into TennisGameService. 
 It stores the match in the session BUT there is no session management implemented. 
 
-* **Match**:
+* **Match**: Abstract class, which is implemented by a Long or Short Match, with 5 or 3 sets in a game
         
 ## The TODOs
 
-* Persistence is not completed
+* Show player at service
+
+* Internationalization (i18n) 
+
+* Persistence 
 
 * Session management
 
-* Error handling is not completed
+* Error handling
+
+* Tie Break
+
+* Loggin 
 
 <!--
     http-server -c-1 -o --cors
@@ -51,4 +59,3 @@ It stores the match in the session BUT there is no session management implemente
 
 In order to test the app, you will need to have installed grails in your host. 
 
-Please, read additional instructions about how to start the client and the server, inside the TennisGameServer/[README.md](https://github.com/mean-develpr/TennisGame/blob/master/TennisGameServer/README.md) and TennisGameClient/[README.md](https://github.com/mean-develpr/TennisGame/blob/master/TennisGameClient/README.md) folders.

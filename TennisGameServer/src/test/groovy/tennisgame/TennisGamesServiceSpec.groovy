@@ -3,7 +3,7 @@ package tennisgame
 import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
-class TennisGameServiceSpec extends Specification implements ServiceUnitTest<TennisGameService> {
+class TennisGamesServiceSpec extends Specification implements ServiceUnitTest<TennisMatchService> {
 
     Match match
 
@@ -69,7 +69,7 @@ class TennisGameServiceSpec extends Specification implements ServiceUnitTest<Ten
         match.getScore(TennisPlayer.PLAYER0.value) == TennisPoint.LOVE
         match.getScore(TennisPlayer.PLAYER1.value) == TennisPoint.LOVE
         //Current set is still first
-        match.getSetPlaying() == 0
+        match.getCurrentSet() == 0
 
         match.setScore(TennisPlayer.PLAYER0.value, TennisPoint.FORTY)
         match.setScore(TennisPlayer.PLAYER1.value, TennisPoint.LOVE)
@@ -82,7 +82,7 @@ class TennisGameServiceSpec extends Specification implements ServiceUnitTest<Ten
         match.getScore(TennisPlayer.PLAYER0.value) == TennisPoint.LOVE
         match.getScore(TennisPlayer.PLAYER1.value) == TennisPoint.LOVE
         //Current set is still first
-        match.getSetPlaying() == 0
+        match.getCurrentSet() == 0
 
         match.setScore(TennisPlayer.PLAYER0.value, TennisPoint.AD)
         match.setScore(TennisPlayer.PLAYER1.value, TennisPoint.DEUCE)
@@ -95,7 +95,7 @@ class TennisGameServiceSpec extends Specification implements ServiceUnitTest<Ten
         match.getScore(TennisPlayer.PLAYER0.value) == TennisPoint.LOVE
         match.getScore(TennisPlayer.PLAYER1.value) == TennisPoint.LOVE
         //Current set is still first
-        match.getSetPlaying() == 0
+        match.getCurrentSet() == 0
     }
 
     def "Player 1 wins Set"() {
@@ -115,7 +115,7 @@ class TennisGameServiceSpec extends Specification implements ServiceUnitTest<Ten
 
         when: "Player 1 wins point AD-DEUCE"
         match.sets = [[6, 3], [5, 0], [0, 0], [0, 0], [0, 0]]
-        match.setPlaying = 1
+        match.currentSet = 1
         match.setScore(TennisPlayer.PLAYER0.value, TennisPoint.AD)
         match.setScore(TennisPlayer.PLAYER1.value, TennisPoint.DEUCE)
         match = service.point(match, TennisPlayer.PLAYER0.value)
@@ -127,7 +127,7 @@ class TennisGameServiceSpec extends Specification implements ServiceUnitTest<Ten
         sets[TennisPlayer.PLAYER1.value] == 0
 
         when: "Player 2 wins point and set"
-        match.sets[match.getSetPlaying()] = [4, 5]
+        match.sets[match.getCurrentSet()] = [4, 5]
         match.setScore(TennisPlayer.PLAYER0.value, TennisPoint.DEUCE)
         match.setScore(TennisPlayer.PLAYER1.value, TennisPoint.AD)
         match = service.point(match, TennisPlayer.PLAYER1.value)
@@ -145,7 +145,7 @@ class TennisGameServiceSpec extends Specification implements ServiceUnitTest<Ten
         match.setScore(TennisPlayer.PLAYER0.value, TennisPoint.FORTY)
         match.setScore(TennisPlayer.PLAYER1.value, TennisPoint.FIFTEEN)
         match.sets = [[6, 3], [4, 6], [6, 0], [6, 5], [0, 0]]
-        match.setPlaying = 3
+        match.currentSet = 3
         match = service.point(match, TennisPlayer.PLAYER0.value)
         then: "Player 1 wins match"
         service.isMatchWon(match) == true
@@ -155,7 +155,7 @@ class TennisGameServiceSpec extends Specification implements ServiceUnitTest<Ten
         match.setScore(TennisPlayer.PLAYER0.value, TennisPoint.LOVE)
         match.setScore(TennisPlayer.PLAYER1.value, TennisPoint.FORTY)
         match.sets = [[6, 3], [4, 6], [6, 0], [2, 6], [5, 6]]
-        match.setPlaying = 4
+        match.currentSet = 4
         match = service.point(match, TennisPlayer.PLAYER1.value)
         then: "Player 2 wins match"
         service.isMatchWon(match) == true
@@ -217,7 +217,7 @@ class TennisGameServiceSpec extends Specification implements ServiceUnitTest<Ten
         match.getScore(TennisPlayer.PLAYER1.value) == TennisPoint.LOVE
         match.getScore(TennisPlayer.PLAYER0.value) == TennisPoint.LOVE
         //Current set is still first
-        match.getSetPlaying() == 0
+        match.getCurrentSet() == 0
 
         match.setScore(TennisPlayer.PLAYER1.value, TennisPoint.FORTY)
         match.setScore(TennisPlayer.PLAYER0.value, TennisPoint.LOVE)
@@ -230,7 +230,7 @@ class TennisGameServiceSpec extends Specification implements ServiceUnitTest<Ten
         match.getScore(TennisPlayer.PLAYER1.value) == TennisPoint.LOVE
         match.getScore(TennisPlayer.PLAYER0.value) == TennisPoint.LOVE
         //Current set is still first
-        match.getSetPlaying() == 0
+        match.getCurrentSet() == 0
 
         match.setScore(TennisPlayer.PLAYER1.value, TennisPoint.AD)
         match.setScore(TennisPlayer.PLAYER0.value, TennisPoint.DEUCE)
@@ -243,7 +243,7 @@ class TennisGameServiceSpec extends Specification implements ServiceUnitTest<Ten
         match.getScore(TennisPlayer.PLAYER1.value) == TennisPoint.LOVE
         match.getScore(TennisPlayer.PLAYER0.value) == TennisPoint.LOVE
         //Current set is still first
-        match.getSetPlaying() == 0
+        match.getCurrentSet() == 0
     }
 
     def "Player 2 wins Set"() {
@@ -263,7 +263,7 @@ class TennisGameServiceSpec extends Specification implements ServiceUnitTest<Ten
 
         when: "Player 1 wins point AD-DEUCE"
         match.sets = [[3, 6], [0, 5], [0, 0], [0, 0], [0, 0]]
-        match.setPlaying = 1
+        match.currentSet = 1
         match.setScore(TennisPlayer.PLAYER1.value, TennisPoint.AD)
         match.setScore(TennisPlayer.PLAYER0.value, TennisPoint.DEUCE)
         match = service.point(match, TennisPlayer.PLAYER1.value)
@@ -275,7 +275,7 @@ class TennisGameServiceSpec extends Specification implements ServiceUnitTest<Ten
         sets[TennisPlayer.PLAYER0.value] == 0
 
         when: "Player 2 wins point and set"
-        match.sets[match.getSetPlaying()] = [5, 4]
+        match.sets[match.getCurrentSet()] = [5, 4]
         match.setScore(TennisPlayer.PLAYER1.value, TennisPoint.DEUCE)
         match.setScore(TennisPlayer.PLAYER0.value, TennisPoint.AD)
         match = service.point(match, TennisPlayer.PLAYER0.value)
@@ -293,7 +293,7 @@ class TennisGameServiceSpec extends Specification implements ServiceUnitTest<Ten
         match.setScore(TennisPlayer.PLAYER1.value, TennisPoint.FORTY)
         match.setScore(TennisPlayer.PLAYER0.value, TennisPoint.FIFTEEN)
         match.sets = [[3, 6], [6, 4], [0, 6], [5, 6], [0, 0]]
-        match.setPlaying = 3
+        match.currentSet = 3
         match = service.point(match, TennisPlayer.PLAYER1.value)
         then: "Player 2 wins match"
         service.isMatchWon(match) == true
@@ -303,7 +303,7 @@ class TennisGameServiceSpec extends Specification implements ServiceUnitTest<Ten
         match.setScore(TennisPlayer.PLAYER1.value, TennisPoint.LOVE)
         match.setScore(TennisPlayer.PLAYER0.value, TennisPoint.FORTY)
         match.sets = [[3, 6], [6, 4], [0, 6], [6, 2], [6, 5]]
-        match.setPlaying = 4
+        match.currentSet = 4
         match = service.point(match, TennisPlayer.PLAYER0.value)
         then: "Player 1 wins match"
         service.isMatchWon(match) == true

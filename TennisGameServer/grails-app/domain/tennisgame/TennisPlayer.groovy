@@ -18,4 +18,12 @@ enum TennisPlayer {
         return name()
     }
 
+    static TennisPlayer valueOf(Integer player) {
+        if (player == 0) {
+            return TennisPlayer.PLAYER0
+        } else if (player == 1) {
+            return  TennisPlayer.PLAYER1
+        }
+    }
+
 }

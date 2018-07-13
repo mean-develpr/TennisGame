@@ -2,12 +2,10 @@ package tennisgame
 
 class ScoreboardController {
 
-//    static scope = "session"
-//    static responseFormats = ['json']
-    TennisGameService tennisGameService
+    ScoreBoardService service = new ScoreBoardService()
 
     def score() {
-        println "GET ScoreboardController/score"
+        println "GET ScoreboardController/points"
         Match match = getMatchFromSession()
         println match
         respond(match: match)
@@ -16,10 +14,11 @@ class ScoreboardController {
     def point(Integer player) {
         println "PUT ScoreboardController/point Player ${player}"
         if (player == 0 || player == 1) {
-            Match match = tennisGameService.point(getMatchFromSession(), player)
+            println "calling service"
+            Match match = service.point(getMatchFromSession(), player)
             session["match"] = match
             println("${session["match"]}")
-            respond(message: match.message)
+            respond(message: match.lastEvent)
         } else {
             String str = "Unknown player ${player}"
             println str
@@ -35,6 +34,11 @@ class ScoreboardController {
             println("Match not found in session")
             session["match"] = new Match()
         }
+        (Match) session["match"]
+    }
+
+    def newMatch() {
+        session["match"] = new Match()
         (Match) session["match"]
     }
 
