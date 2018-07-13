@@ -3,7 +3,7 @@ package tennisgame
 class Match {
 
     TennisScore score
-    String lastEvent
+    String matchEvent
     List<TennisGames> sets = new ArrayList<TennisGames>()
     static hasMany = [sets: TennisGames]
 //    TennisPlayer servicePlayer
@@ -12,7 +12,7 @@ class Match {
         score = new TennisScore()
         sets.add(new TennisGames())
 //        servicePlayer = TennisPlayer.PLAYER0
-        lastEvent = "New match created"
+        matchEvent = "New match created"
     }
 
     static constraints = {

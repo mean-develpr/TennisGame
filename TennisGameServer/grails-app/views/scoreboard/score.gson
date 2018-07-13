@@ -6,7 +6,7 @@ model {
 }
 
 json {
-    msg match.lastEvent
+    msg match.matchEvent
 //    service match.servicePlayer
 //    winner match.winner
 

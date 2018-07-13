@@ -3,7 +3,7 @@ package tennisgame
 //import grails.gorm.transactions.Transactional
 
 //@Transactional
-class TennisMatchService {
+class TennisScoreBoardService {
 
     /**
      * Updates points of the current game
@@ -45,7 +45,7 @@ class TennisMatchService {
                 match.score.points[player.value] = TennisPoint.WIN
                 break
         }
-        match.lastEvent = "Point won by player ${player.value}"
+        match.matchEvent = "Point won by player ${player.value}"
         match
     }
 
@@ -63,7 +63,7 @@ class TennisMatchService {
  */
     static Boolean isGameWon(Match match, TennisPlayer player) {
         if (match.score.points[player.value] == TennisPoint.WIN) {
-            match.lastEvent = "Game won by player ${player}"
+            match.matchEvent = "Game won by player ${player.value}"
             return true
         } else {
             return false
@@ -93,7 +93,7 @@ class TennisMatchService {
     static Boolean isLastSetWon(Match match) {
         println("isLastSetWon")
         if (isSetWon(match.sets[-1])) {
-            match.lastEvent = "Set won!"
+            match.matchEvent = "Set won!"
             true
         } else {
             false
@@ -109,7 +109,7 @@ class TennisMatchService {
         println("isMatchWon")
         Integer[] setsWon = setsWonByPlayer(match)
         if (setsWon[TennisPlayer.PLAYER0.value] > 2 || setsWon[TennisPlayer.PLAYER1.value] > 2) {
-            match.lastEvent = "Match won by player ${getWinner(match)}"
+            match.matchEvent = "Match won by player ${getWinner(match)}"
             return true
         } else {
             return false

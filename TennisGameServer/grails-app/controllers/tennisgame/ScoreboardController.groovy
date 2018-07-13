@@ -18,7 +18,7 @@ class ScoreboardController {
             Match match = service.point(getMatchFromSession(), player)
             session["match"] = match
             println("${session["match"]}")
-            respond(message: match.lastEvent)
+            respond(message: match.matchEvent)
         } else {
             String str = "Unknown player ${player}"
             println str
