@@ -13,7 +13,7 @@ class PointSpec extends Specification implements DomainUnitTest<Point> {
     }
 
     void "test something"() {
-        expect:"fix me"
-            true
+        expect: "fix me"
+        true
     }
 }

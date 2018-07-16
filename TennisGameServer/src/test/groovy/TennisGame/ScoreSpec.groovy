@@ -13,7 +13,7 @@ class ScoreSpec extends Specification implements DomainUnitTest<Score> {
     }
 
     void "test something"() {
-        expect:"fix me"
-            true
+        expect: "fix me"
+        true
     }
 }

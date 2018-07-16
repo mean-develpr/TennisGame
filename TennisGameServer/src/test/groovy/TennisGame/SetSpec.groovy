@@ -13,7 +13,7 @@ class SetSpec extends Specification implements DomainUnitTest<Set> {
     }
 
     void "test something"() {
-        expect:"fix me"
-            true
+        expect: "fix me"
+        true
     }
 }

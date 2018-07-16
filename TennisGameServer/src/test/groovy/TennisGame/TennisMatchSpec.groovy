@@ -12,7 +12,7 @@ class TennisMatchSpec extends Specification implements DomainUnitTest<TennisMatc
     }
 
     void "test something"() {
-        expect:"fix me"
-            true
+        expect: "fix me"
+        true
     }
 }

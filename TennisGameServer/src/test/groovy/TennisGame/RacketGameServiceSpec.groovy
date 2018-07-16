@@ -3,7 +3,7 @@ package TennisGame
 import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
-class RacketGameServiceSpec extends Specification implements ServiceUnitTest<RacketGameService>{
+class RacketGameServiceSpec extends Specification implements ServiceUnitTest<RacketGameService> {
 
     def setup() {
     }
@@ -12,7 +12,7 @@ class RacketGameServiceSpec extends Specification implements ServiceUnitTest<Rac
     }
 
     void "test something"() {
-        expect:"fix me"
-            true
+        expect: "fix me"
+        true
     }
 }
