@@ -1,4 +1,4 @@
-package TennisGame
+package RaquetGame.TennisGame
 
 /**
  * Utility functions which work with maps<Integer, Integer>

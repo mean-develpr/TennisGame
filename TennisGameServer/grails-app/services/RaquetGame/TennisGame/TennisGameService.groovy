@@ -1,7 +1,8 @@
-package TennisGame
+package RaquetGame.TennisGame
 
 import RaquetGame.Match
 import RaquetGame.Player
+import RaquetGame.RacketGameService
 import RaquetGame.Set
 
 //import grails.gorm.transactions.Transactional
@@ -51,7 +52,7 @@ class TennisGameService extends RacketGameService {
     Boolean isGameWonByPlayer(Match match, Player player) {
         String point = getScoreForPlayer(match, player)
         if (point == TennisPoint.WIN) {
-            match.matchEvent = "Game won by player ${player}"
+            match.matchEvent = "Game won by player ${player.value}"
             return true
         } else {
             return false

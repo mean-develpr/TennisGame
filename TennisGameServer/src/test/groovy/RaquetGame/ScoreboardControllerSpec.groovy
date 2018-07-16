@@ -1,5 +1,7 @@
-package TennisGame
+package RaquetGame
 
+import RaquetGame.ScoreboardController
+import RaquetGame.TennisGame.TennisMatch
 import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 

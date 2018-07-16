@@ -1,8 +1,7 @@
-package TennisGame
+package RaquetGame
 
-import RaquetGame.Match
-import RaquetGame.Player
-import RaquetGame.Set
+import RaquetGame.TennisGame.MatchUtils
+import RaquetGame.TennisGame.RaquetException
 
 //import grails.gorm.transactions.Transactional
 

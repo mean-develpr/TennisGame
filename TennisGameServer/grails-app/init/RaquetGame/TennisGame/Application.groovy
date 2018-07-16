@@ -1,4 +1,4 @@
-package TennisGame
+package RaquetGame.TennisGame
 
 import grails.boot.GrailsApp
 import grails.boot.config.GrailsAutoConfiguration

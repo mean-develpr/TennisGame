@@ -1,6 +1,7 @@
-package TennisGame
+package RaquetGame
 
 import RaquetGame.Match
+import RaquetGame.TennisGame.RaquetException
 
 interface Scoreboard {
 

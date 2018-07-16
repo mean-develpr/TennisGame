@@ -1,4 +1,4 @@
-package TennisGame
+package RaquetGame.TennisGame
 
 import RaquetGame.Player
 import RaquetGame.Score

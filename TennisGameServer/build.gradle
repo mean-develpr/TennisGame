@@ -12,7 +12,7 @@ buildscript {
 }
 
 version "0.1"
-group "TennisGame"
+group "RaquetGame.TennisGame"
 
 apply plugin: "eclipse"
 apply plugin: "idea"

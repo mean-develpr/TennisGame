@@ -1,6 +1,10 @@
-package TennisGame
+package RaquetGame
 
 import RaquetGame.Match
+import RaquetGame.Scoreboard
+import RaquetGame.TennisGame.RaquetException
+import RaquetGame.TennisGame.TennisGameService
+import RaquetGame.TennisGame.TennisMatch
 
 class ScoreboardController {
 
