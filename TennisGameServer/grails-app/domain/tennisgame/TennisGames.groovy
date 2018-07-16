@@ -1,4 +1,4 @@
-package tennisgame
+package TennisGame
 
 class TennisGames {
 

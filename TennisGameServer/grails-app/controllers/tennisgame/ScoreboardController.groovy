@@ -15,31 +15,24 @@ class ScoreboardController {
 
     def point(Integer player) {
         println "PUT ScoreboardController/point Player ${player}"
-        if (player == 0 || player == 1) {
-            println "calling service"
+        try {
             Match match = service.point(getMatchFromSession(), player)
             session["match"] = match
-            println("${session["match"]}")
             respond(message: match.matchEvent)
-        } else {
-            String str = "Unknown player ${player}"
-            println str
-            //TODO fix error response
-            respond(message: str)
+        } catch (RaquetException ex) {
+            respond(message: ex.getCode())
         }
-
     }
 
     private Match getMatchFromSession() {
         Match match = (Match) session["match"]
         if (!match) {
-            println("Match not found in session")
-            session["match"] = new TennisMatch()
+            newMatch()
         }
         (Match) session["match"]
     }
 
-    def newMatch() {
+    private void newMatch() {
         session["match"] = new TennisMatch()
         (Match) session["match"]
     }

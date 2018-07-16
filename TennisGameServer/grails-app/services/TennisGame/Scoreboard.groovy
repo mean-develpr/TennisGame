@@ -4,5 +4,5 @@ import RaquetGame.Match
 
 interface Scoreboard {
 
-    Match point(Match match, Integer player)
+    Match point(Match match, Integer player) throws RaquetException
 }

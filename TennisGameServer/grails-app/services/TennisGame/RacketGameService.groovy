@@ -9,34 +9,29 @@ import RaquetGame.Set
 //@Transactional
 abstract class RacketGameService implements RacketGame, Scoreboard {
 
-    Match point(Match match, Integer player) {
-        try {
-            validateOperation(match, player)
-            Player racketPlayer = new Player(player)
-            match = calculateScoreForPlayer(match, racketPlayer)
-            if (isGameWonByPlayer(match, racketPlayer)) {
-                match = updateGamesForPlayer(match, racketPlayer)
-                if (isLastSetWon(match)) {
-                    if (!isMatchWon(match)) {
-                        match = addNewSet(match)
-                    }
+    Match point(Match match, Integer player) throws RaquetException {
+        validateOperation(match, player)
+        Player racketPlayer = new Player(player)
+        match = calculateScoreForPlayer(match, racketPlayer)
+        if (isGameWonByPlayer(match, racketPlayer)) {
+            match = updateGamesForPlayer(match, racketPlayer)
+            if (isLastSetWon(match)) {
+                if (!isMatchWon(match)) {
+                    match = addNewSet(match)
                 }
             }
-        } catch (Exception e) {
-            println(e)
-            match.matchEvent = e.getMessage()
         }
         // Return modified match to the controller
         // TODO use GORM persistence instead: match.save()
         match
     }
 
-    void validateOperation(Match match, Integer player) throws Exception {
+    void validateOperation(Match match, Integer player) throws RaquetException {
         if (player != 0 && player != 1) {
-            throw new Exception("Player number not valid")
+            throw new RaquetException("Player number not valid", "Player number not valid")
         }
         if (isMatchWon(match)) {
-            throw new Exception("Match finished")
+            throw new RaquetException("Match finished", "Match finished")
         }
     }
 

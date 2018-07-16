@@ -44,6 +44,7 @@ class MatchUtils {
         Integer _player = 0
         for (int i = 0; i < whatever.length; i++) {
             if (max < whatever[i]) {
+                max = whatever[i]
                 _player = i
             }
         }
