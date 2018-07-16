@@ -1,8 +1,6 @@
-package RaquetGame
+package TennisGame
 
-import TennisGame.Scoreboard
-import TennisGame.TennisGameService
-import TennisGame.TennisMatch
+import RaquetGame.Match
 
 class ScoreboardController {
 
