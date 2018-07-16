@@ -1,8 +1,12 @@
-package tennisgame
+package RaquetGame
+
+import TennisGame.Scoreboard
+import TennisGame.TennisGameService
+import TennisGame.TennisMatch
 
 class ScoreboardController {
 
-    ScoreBoardService service = new ScoreBoardService()
+    Scoreboard service = new TennisGameService()
 
     def score() {
         println "GET ScoreboardController/points"
@@ -32,13 +36,13 @@ class ScoreboardController {
         Match match = (Match) session["match"]
         if (!match) {
             println("Match not found in session")
-            session["match"] = new Match()
+            session["match"] = new TennisMatch()
         }
         (Match) session["match"]
     }
 
     def newMatch() {
-        session["match"] = new Match()
+        session["match"] = new TennisMatch()
         (Match) session["match"]
     }
 

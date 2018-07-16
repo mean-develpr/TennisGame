@@ -1,4 +1,4 @@
-package tennisgame
+package TennisGame
 
 import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
@@ -13,7 +13,7 @@ class ScoreboardControllerSpec extends Specification implements ControllerUnitTe
 
     def "score method"() {
         when: "Score Method is called"
-        controller.session.match = new Match()
+        controller.session.match = new TennisMatch()
         def something = controller.score()
         then: "Nothing is returned"
         something == null

@@ -1,47 +1,37 @@
-package tennisgame
+package TennisGame
 
 /**
- * Utility functions which work with arrays within the Match Class
+ * Utility functions which work with maps<Integer, Integer>
  */
 
 class MatchUtils {
 
     /**
-     * Utility method that checks if all items in array are equal
-     * @param myArray
-     * @param value
-     * @return True if all items in array are equal, false elsewhere
-     */
-    static Boolean isSameValueInArray(Object[] myArray, Object value) {
-        for (Object item : myArray) {
-            if (item != value) {
-                return false
-            }
-        }
-        true
-    }
-
-    /**
-     * Gets the difference between the values of an array of 2
-     * @param whatever array of integers
+     * Gets the difference between the values in a map
+     * @param whatever map of integers
      * @return abs value of difference
      */
-    static Integer getDiff(Integer[] whatever) {
-        Integer abs = Math.abs(whatever[0] - whatever[1])
-        return abs
+    static Integer getDiff(Map<Integer, Integer> games) {
+        Integer diff = 0
+        for (Integer _player : games.keySet()) {
+            diff = Math.abs(diff - games.get(_player))
+        }
+        return diff
     }
 
     /**
-     * Gets the mac between the values of an array of 2
+     * Gets the max between the values in a map
      * @param whatever array of integers
      * @return max or the first value
      */
-    static Integer getMax(Integer[] whatever) {
-        if (whatever[0] >= whatever[1]) {
-            return whatever[0]
-        } else {
-            return whatever[1]
+    static Integer getMax(Map<Integer, Integer> games) {
+        Integer max = 0
+        for (Integer _player : games.keySet()) {
+            if (games.get(_player) >= max) {
+                max = games.get(_player)
+            }
         }
+        return max
     }
 
     /**
@@ -50,10 +40,13 @@ class MatchUtils {
      * @return index containing the player
      */
     static Integer getMaxIndex(Integer[] whatever) {
-        if (whatever[0] >= whatever[1]) {
-            return 0
-        } else {
-            return 1
+        Integer max = 0
+        Integer _player = 0
+        for (int i = 0; i < whatever.length; i++) {
+            if (max < whatever[i]) {
+                _player = i
+            }
         }
+        return _player
     }
 }

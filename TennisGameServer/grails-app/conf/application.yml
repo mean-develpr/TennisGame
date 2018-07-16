@@ -2,7 +2,7 @@
 grails:
     profile: web
     codegen:
-        defaultPackage: tennisgame
+        defaultPackage: TennisGameImplInt
     gorm:
         reactor:
             # Whether to translate GORM events into Reactor events

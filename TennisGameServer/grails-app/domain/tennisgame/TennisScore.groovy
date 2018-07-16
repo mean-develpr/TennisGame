@@ -1,12 +1,15 @@
-package tennisgame
+package TennisGame
 
-class TennisScore {
+import RaquetGame.Player
+import RaquetGame.Score
 
-    TennisPoint[] points
+class TennisScore extends Score {
 
     TennisScore() {
-        points = [TennisPoint.LOVE, TennisPoint.LOVE]
+        points.put(Player.PLAYER0, new TennisPoint().toString())
+        points.put(Player.PLAYER1, new TennisPoint().toString())
     }
+
     static constraints = {
     }
 }

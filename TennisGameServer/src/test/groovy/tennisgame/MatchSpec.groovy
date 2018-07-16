@@ -1,5 +1,6 @@
-package tennisgame
+package TennisGame
 
+import RaquetGame.Match
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 

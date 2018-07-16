@@ -1,5 +1,5 @@
-import tennisgame.Match
-import tennisgame.TennisGames
+import RaquetGame.Match
+import RaquetGame.Set
 
 model {
     Match match
@@ -14,8 +14,8 @@ json {
         player0: match.score.points[0],
         player1: match.score.points[1]
     )
-    sets match.sets, { TennisGames set ->
-        player0 set.games[0]
-        player1 set.games[1]
+    sets match.sets, { Set set ->
+        player0 set.games.get(0)
+        player1 set.games.get(1)
     }
 }

@@ -1,9 +1,10 @@
 package TennisGame
 
+import RaquetGame.Set
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
-class TennisScoreSpec extends Specification implements DomainUnitTest<TennisScore> {
+class SetSpec extends Specification implements DomainUnitTest<Set> {
 
     def setup() {
     }

@@ -1,4 +1,4 @@
-package tennisgame
+package TennisGame
 
 class UrlMappings {
 
@@ -16,5 +16,6 @@ class UrlMappings {
         get "/score"(controller: 'scoreboard', action: "score")
         put "/point/$player?"(controller: 'scoreboard', action: "point")
         post "/newMatch"(controller: 'scoreboard', action: "newMatch")
+
     }
 }

@@ -1,9 +1,9 @@
 package TennisGame
 
-import grails.testing.gorm.DomainUnitTest
+import grails.testing.services.ServiceUnitTest
 import spock.lang.Specification
 
-class TennisScoreSpec extends Specification implements DomainUnitTest<TennisScore> {
+class RacketGameServiceSpec extends Specification implements ServiceUnitTest<RacketGameService>{
 
     def setup() {
     }
