@@ -13,7 +13,6 @@ class ScoreboardController {
     def score() {
         println "GET ScoreboardController/points"
         Match match = getMatchFromSession()
-        println match
         respond(match: match)
     }
 
