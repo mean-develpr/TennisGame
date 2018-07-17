@@ -1,5 +1,5 @@
-import RaquetGame.Match
-import RaquetGame.Set
+import RacketSport.Match
+import RacketSport.Set
 
 model {
     Match match
