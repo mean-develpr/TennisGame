@@ -1,4 +1,4 @@
-package RacketSport
+package utils
 
 /**
  * Utility functions which work with maps<Integer, Integer>

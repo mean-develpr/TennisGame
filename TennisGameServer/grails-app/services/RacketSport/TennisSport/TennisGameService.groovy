@@ -1,10 +1,10 @@
 package RacketSport.TennisSport
 
-import RacketSport.MapUtils
 import RacketSport.Match
 import RacketSport.Player
 import RacketSport.RacketGameService
 import RacketSport.Set
+import utils.MapUtils
 
 /**
  * Calculates the score and the progress of a tennis match.
