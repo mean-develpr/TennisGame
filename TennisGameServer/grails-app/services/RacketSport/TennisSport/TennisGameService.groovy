@@ -13,7 +13,7 @@ import utils.MapUtils
 
 //import grails.gorm.transactions.Transactional
 //@Transactional
-class TennisGameService extends RacketGameService {
+final class TennisGameService extends RacketGameService {
 
     Match calculateScoreForPlayer(Match match, Player player) {
         // Add point to player

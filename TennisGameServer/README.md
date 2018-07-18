@@ -26,7 +26,20 @@ You can also test with __curl__ (https://curl.haxx.se/download.html). Here are s
     curl -X PUT -b "cookie.txt" -c "cookie.txt" -H "Accept: application/json" "localhost:8080/point/1"  | jq .
     curl -X PUT -b "cookie.txt" -c "cookie.txt" -H "Accept: application/json" "localhost:8080/point/0"  | jq .
     
+> In order to test the app, you will need to have installed grails in your host. 
+    
 ## THE WIRING
+
+The main idea was to use a design which would make easier to extend the behaviour of the application to calculate another 
+racket sport, such as ping-pong or similar.
+
+With this in mind, the RacketGameService contains overall methods to calculate scores in any racket sport.
+As the counting score differ from t.ex. tennis and ping-pong, each sport must implement its own Service, 
+and in this example, the TennisGameService contains methods to calculate the scores(LOVE,FIFTEEN..) for each player,
+ as well as the calculation of new games, sets and match.
+RacketGameService has been declared as abstract, forcing any class which extends it to implement these methods.
+
+The Domain classes also follow this idea, as the Match class is abstract and only TennisMatch can be instantiated.
 
 
 ###  CONTROLLERS
@@ -35,7 +48,10 @@ You can also test with __curl__ (https://curl.haxx.se/download.html). Here are s
             ├── ScoreboardController.groovy (1)
             └── UrlMappings.groovy 
             
-1. **ScoreboardController**: Delegates logic into TennisGameService. The match is stored in the session BUT there is no session management implemented. 
+1. **ScoreboardController**: Delegates logic calculation into TennisGameService, which is injected by convention, 
+using underlying Spring Framework. The it renders the response to appropriate view. 
+
+> The match is stored in the session BUT there is no session management implemented. 
     
 ###  SERVICES
 
@@ -48,7 +64,11 @@ You can also test with __curl__ (https://curl.haxx.se/download.html). Here are s
 
 
 1.  **TennisGameService** Calculates the score and the progress of a tennis match. It extends RacketGameService.
-1.  **RacketGameService** Abstract, implements the RacketGame interface which is used to keep track of the scores. The idea is that each sport (PingPong, Paddle...) will implement its own methods as in the TennisGameService to calculate the score
+1.  **RacketGameService** Abstract, implements the RacketGame and ScoreBoard interfaces which are used to keep track of 
+the scores. 
+
+As mentioned before, the idea is that each sport (Ping-Pong, Paddle...) will implement its own methods as in the 
+TennisGameService to calculate the score
 
 
 ###  DOMAIN
@@ -83,10 +103,11 @@ Again, the idea is to be able to represent any racket match, only a Tennis Match
 1. RacketGame: Interface with methods to calculate score progress in 'any' racket game
 1. Scoreboard: Interface which only contains a method _point()_ which is called within the controller
 1. RacketException: Exception to handle own errors and not to delegate in GORM configuration, just something simple
-1. MapUtils: Utility class which work with maps<Integer, Integer>
+1. MapUtils: Utility class which works with maps<Integer, Integer>
   
 ### SRC/TEST
-Contains SOME unit test, mainly to test score progress of the TennisGameService. 
+
+Contains SOME unit test.
  
        groovy
            └── RacketSport
@@ -96,7 +117,7 @@ Contains SOME unit test, mainly to test score progress of the TennisGameService.
                ├── PointSpec.groovy
                └── ScoreboardControllerSpec.groovy
                
-1. TennisGameServiceSpec: Test the TennisGameService to verify score progress
+1. TennisGameServiceSpec: to ensure correctness of the TennisGameService score calculations. 
            
 ## The TODOs
 
@@ -117,5 +138,5 @@ Contains SOME unit test, mainly to test score progress of the TennisGameService.
     http-server -c-1 -o --cors
 --->
 
-> In order to test the app, you will need to have installed grails in your host. 
+
 

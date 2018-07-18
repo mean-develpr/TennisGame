@@ -1,12 +1,10 @@
 package RacketSport
 
-import RacketSport.TennisSport.TennisGameService
 import RacketSport.TennisSport.TennisMatch
 
 class ScoreboardController {
 
-    //Inject Tennis implementation
-    //Scoreboard service = new TennisGameService()
+    //Inject tennis implementation
     def tennisGameService
 
     def score() {
