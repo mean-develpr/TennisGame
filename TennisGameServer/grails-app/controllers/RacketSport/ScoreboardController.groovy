@@ -6,7 +6,8 @@ import RacketSport.TennisSport.TennisMatch
 class ScoreboardController {
 
     //Inject Tennis implementation
-    Scoreboard service = new TennisGameService()
+    //Scoreboard service = new TennisGameService()
+    def tennisGameService
 
     def score() {
         println "GET ScoreboardController/score"
@@ -17,7 +18,7 @@ class ScoreboardController {
     def point(Integer player) {
         println "PUT ScoreboardController/point Player ${player}"
         try {
-            Match match = service.point(getMatchFromSession(), player)
+            Match match = tennisGameService.point(getMatchFromSession(), player)
             session["match"] = match
             respond(message: match.matchEvent)
         } catch (RacketException ex) {
