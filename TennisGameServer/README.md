@@ -28,38 +28,33 @@ You can also test with __curl__ (https://curl.haxx.se/download.html). Here are s
     
 ## The Wiring
 
-* **TennisGameService**: Here is where all calculations are done. It exposes only one method:
 
-    *  **Match point(Match match, Integer player)** Calculates resulting match after a point is won by player, updating player scores, games and a message with last action.
-
-* **ScoreboardController**: Very simple controller, delegates logic into TennisGameService. 
-It stores the match in the session BUT there is no session management implemented. 
-
-1. **CONTROLLERS** Here follows the package structure of the domain classes
-
+###  CONTROLLERS
 
         └── RacketSport
             ├── TennisSport
             ├── ScoreboardController.groovy
             └── UrlMappings.groovy
+            
+1. **ScoreboardController**: Delegates logic into TennisGameService. The match is stored in the session BUT there is no session management implemented. 
     
-1. **SERVICES** Here follows the package structure of the domain classes
+###  SERVICES
+
 
 
         └── RacketSport
             ├── TennisSport
             │   └── TennisGameService.groovy    (1)
-            ├── MapUtils.groovy                 (2)
             └── RacketGameService.groovy        (3)
 
 
-1. TennisGameService
-    
-1. MapUtils
-    
-1. RacketGameService
+1.  **TennisGameService** Calculates the score and the progress of a tennis match. It extends RacketGameService.
+1.  **RacketGameService** Abstract, implements the RacketGame interface which is used to keep track of the scores. The idea is that each sport (PingPong, Paddle...) will implement its own methods as in the TennisGameService to calculate the score
 
-1. **DOMAIN** Here follows the package structure of the domain classes
+
+###  DOMAIN
+
+Here follows the package structure of the domain classes
 
 
         └── RacketSport
@@ -73,9 +68,24 @@ It stores the match in the session BUT there is no session management implemente
             ├── Score.groovy
             └── Set.groovy
             
-    Again, the idea is to be able to represent any racket match, only a Tennis Match is implemented now
+Again, the idea is to be able to represent any racket match, only a Tennis Match is implemented now
      
+### SRC/MAIN
+   
+   
+       groovy
+           ├── RacketSport
+           │   ├── RacketException.groovy
+           │   ├── RacketGame.groovy
+           │   └── Scoreboard.groovy
+           └── utils
+               └── MapUtils.groovy
         
+1. RacketGame: Interface with methods to calculate score progress in 'any' racket game
+1. Scoreboard: Interface which only contains a method _point()_ which is called within the controller
+1. MapUtils: Utility class which work with maps<Integer, Integer>
+   
+           
 ## The TODOs
 
 * Internationalization (i18n) 
@@ -84,7 +94,9 @@ It stores the match in the session BUT there is no session management implemente
 
 * Session management
 
-* Error handling
+* Improve Error handling
+
+* Create a PingPong from TennisGameService
 
 <!--
     http-server -c-1 -o --cors
