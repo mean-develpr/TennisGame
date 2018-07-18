@@ -116,9 +116,9 @@ class TennisGameServiceSpec extends Specification implements ServiceUnitTest<Ten
         then: "Player 1 wins set"
         match.score.points.get(Player.PLAYER0) == TennisPoint.LOVE
         match.score.points.get(Player.PLAYER1) == TennisPoint.LOVE
-        Integer[] setsWon = service.getSetsWonByPlayer(match)
-        setsWon[Player.PLAYER0] == 1
-        setsWon[Player.PLAYER1] == 0
+        Map<Integer, Integer> setsWon = service.getSetsWonByPlayer(match)
+        setsWon.get(Player.PLAYER0) == 1
+        setsWon.get(Player.PLAYER1) == 0
 
         when: "Player 1 wins point AD-DEUCE"
         match.sets.add(new Set(5, 0))
@@ -128,8 +128,9 @@ class TennisGameServiceSpec extends Specification implements ServiceUnitTest<Ten
         then: "Player 1 wins set"
         match.score.points.get(Player.PLAYER0) == TennisPoint.LOVE
         match.score.points.get(Player.PLAYER1) == TennisPoint.LOVE
-        service.getSetsWonByPlayer(match)[Player.PLAYER0] == 2
-        service.getSetsWonByPlayer(match)[Player.PLAYER1] == 0
+        Map<Integer, Integer> setsWon2 = service.getSetsWonByPlayer(match)
+        setsWon2.get(Player.PLAYER0) == 2
+        setsWon2.get(Player.PLAYER1) == 0
 
         when: "Player 2 wins point and set"
         match.sets.add(new Set(4, 5))
@@ -139,8 +140,9 @@ class TennisGameServiceSpec extends Specification implements ServiceUnitTest<Ten
         then: "Player 2 wins set"
         match.score.points.get(Player.PLAYER0) == TennisPoint.LOVE
         match.score.points.get(Player.PLAYER1) == TennisPoint.LOVE
-        service.getSetsWonByPlayer(match)[Player.PLAYER0] == 2
-        service.getSetsWonByPlayer(match)[Player.PLAYER1] == 1
+        Map<Integer, Integer> setsWon3 = service.getSetsWonByPlayer(match)
+        setsWon3.get(Player.PLAYER0) == 2
+        setsWon3.get(Player.PLAYER1) == 1
     }
 
     def "Player 1 wins Match"() {
@@ -261,9 +263,9 @@ class TennisGameServiceSpec extends Specification implements ServiceUnitTest<Ten
         then: "Player 2 wins set"
         match.score.points.get(Player.PLAYER0) == TennisPoint.LOVE
         match.score.points.get(Player.PLAYER1) == TennisPoint.LOVE
-        Integer[] setsWon = service.getSetsWonByPlayer(match)
-        setsWon[Player.PLAYER0] == 0
-        setsWon[Player.PLAYER1] == 1
+        Map<Integer, Integer> setsWon = service.getSetsWonByPlayer(match)
+        setsWon.get(Player.PLAYER0) == 0
+        setsWon.get(Player.PLAYER1) == 1
 
         when: "Player 1 wins point AD-DEUCE"
 
@@ -274,8 +276,9 @@ class TennisGameServiceSpec extends Specification implements ServiceUnitTest<Ten
         then: "Player 1 wins set"
         match.score.points.get(Player.PLAYER0) == TennisPoint.LOVE
         match.score.points.get(Player.PLAYER1) == TennisPoint.LOVE
-        service.getSetsWonByPlayer(match)[Player.PLAYER0] == 0
-        service.getSetsWonByPlayer(match)[Player.PLAYER1] == 2
+        Map<Integer, Integer> setsWon2 = service.getSetsWonByPlayer(match)
+        setsWon2.get(Player.PLAYER0) == 0
+        setsWon2.get(Player.PLAYER1) == 2
     }
 
     def "Player 2 wins Match"() {

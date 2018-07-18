@@ -1,7 +1,8 @@
 package RacketSport
 
-import grails.validation.ValidationException
-
+/**
+ * Methods to calculate the 'any' racket score
+ */
 interface RacketGame {
 
     /**
@@ -67,9 +68,9 @@ interface RacketGame {
     /**
      * Returns the number of sets won by each player
      * @param match
-     * @return Integer[2] with sets won
+     * @return Map with sets won
      */
-    Integer[] getSetsWonByPlayer(Match match)
+    Map<Integer, Integer> getSetsWonByPlayer(Match match)
 
     /**
      * Returns the other player

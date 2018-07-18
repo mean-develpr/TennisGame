@@ -2,6 +2,7 @@ package RacketSport
 
 import grails.validation.ValidationException
 import org.springframework.validation.Errors
+import utils.MapUtils
 
 //import grails.gorm.transactions.Transactional
 
@@ -56,15 +57,17 @@ abstract class RacketGameService implements RacketGame, Scoreboard {
         }
     }
 
-    Integer[] getSetsWonByPlayer(Match match) {
-        Integer[] setsWon = [0, 0]
+    Map<Integer, Integer> getSetsWonByPlayer(Match match) {
+        Map<Integer, Integer> setsWon = new HashMap<Integer, Integer>()
+        setsWon.put(Player.PLAYER0, 0)
+        setsWon.put(Player.PLAYER1, 0)
         for (Set set : match.sets) {
             if (isSetWon(set)) {
                 //Check who won the set
                 if (set.games[Player.PLAYER0] > set.games[Player.PLAYER1]) {
-                    setsWon[Player.PLAYER0]++
+                    setsWon.put(Player.PLAYER0, ++setsWon.get(Player.PLAYER0))
                 } else {
-                    setsWon[Player.PLAYER1]++
+                    setsWon.put(Player.PLAYER1, ++setsWon.get(Player.PLAYER1))
                 }
             }
         }
@@ -72,7 +75,7 @@ abstract class RacketGameService implements RacketGame, Scoreboard {
     }
 
     Integer getWinner(Match match) {
-        Integer[] setsWon = getSetsWonByPlayer(match)
+        Map<Integer, Integer> setsWon = getSetsWonByPlayer(match)
         Integer winner = MapUtils.getMaxIndex(setsWon)
         return winner
     }

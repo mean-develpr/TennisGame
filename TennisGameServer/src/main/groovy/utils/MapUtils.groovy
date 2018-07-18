@@ -1,7 +1,7 @@
 package utils
 
 /**
- * Utility functions which work with maps<Integer, Integer>
+ * Utility class which work with maps<Integer, Integer>
  */
 
 class MapUtils {
@@ -35,19 +35,19 @@ class MapUtils {
     }
 
     /**
-     * Returns the index which contains the max value in an array of 2
+     * Returns the index which contains the max value in a map
      * @param whatever
-     * @return index containing the player
+     * @return index
      */
-    static Integer getMaxIndex(Integer[] whatever) {
+    static Integer getMaxIndex(Map<Integer, Integer> games) {
         Integer max = 0
-        Integer _player = 0
-        for (int i = 0; i < whatever.length; i++) {
-            if (max < whatever[i]) {
-                max = whatever[i]
-                _player = i
+        Integer winner = 0
+        for (Integer _player : games.keySet()) {
+            if (games.get(_player) >= max) {
+                max = games.get(_player)
+                winner = _player
             }
         }
-        return _player
+        return winner
     }
 }

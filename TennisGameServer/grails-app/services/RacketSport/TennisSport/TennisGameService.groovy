@@ -69,8 +69,8 @@ class TennisGameService extends RacketGameService {
     }
 
     Boolean isMatchWon(Match match) {
-        Integer[] setsWon = getSetsWonByPlayer(match)
-        if (setsWon[Player.PLAYER0] > 2 || setsWon[Player.PLAYER1] > 2) {
+        Map<Integer, Integer> setsWon = getSetsWonByPlayer(match)
+        if (setsWon.get(Player.PLAYER0) > 2 || setsWon.get(Player.PLAYER1) > 2) {
             match.matchEvent = "Match won by player ${getWinner(match)}"
             return true
         } else {
