@@ -119,5 +119,5 @@ Contains SOME unit test, mainly to test score progress of the TennisGameService.
     http-server -c-1 -o --cors
 --->
 
-In order to test the app, you will need to have installed grails in your host. 
+> In order to test the app, you will need to have installed grails in your host. 
 
