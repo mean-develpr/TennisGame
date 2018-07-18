@@ -9,6 +9,4 @@ The application consists of a very simple HTML client and a server:
   1. [The Server](https://github.com/mean-develpr/TennisGame/blob/master/TennisGameServer/README.md): implemented with Grails.
  
 
-Follow instructions in specific sections to start the server & client. 
-
-Please, contact me if you find anything broken meandevelopr@gmail.com
+Follow instructions in each section to start the server & client. 
