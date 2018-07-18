@@ -26,9 +26,7 @@ You can also test with __curl__ (https://curl.haxx.se/download.html). Here are s
     curl -X PUT -b "cookie.txt" -c "cookie.txt" -H "Accept: application/json" "localhost:8080/point/1"  | jq .
     curl -X PUT -b "cookie.txt" -c "cookie.txt" -H "Accept: application/json" "localhost:8080/point/0"  | jq .
     
-## The Wiring
-TODO HERE
-
+## THE WIRING
 
 
 ###  CONTROLLERS
@@ -102,7 +100,7 @@ Contains SOME unit test, mainly to test score progress of the TennisGameService.
            
 ## The TODOs
 
-* Create a PingPong from TennisGameService (new controller and UI)
+* Create an example, as a  PingPongService, using same principle as the TennisGameService. New controller and UI for this.
 
 * Persistence 
 
