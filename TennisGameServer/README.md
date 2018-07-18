@@ -27,14 +27,15 @@ You can also test with __curl__ (https://curl.haxx.se/download.html). Here are s
     curl -X PUT -b "cookie.txt" -c "cookie.txt" -H "Accept: application/json" "localhost:8080/point/0"  | jq .
     
 ## The Wiring
+TODO HERE
+
 
 
 ###  CONTROLLERS
 
         └── RacketSport
-            ├── TennisSport
-            ├── ScoreboardController.groovy
-            └── UrlMappings.groovy
+            ├── ScoreboardController.groovy (1)
+            └── UrlMappings.groovy 
             
 1. **ScoreboardController**: Delegates logic into TennisGameService. The match is stored in the session BUT there is no session management implemented. 
     
@@ -45,7 +46,7 @@ You can also test with __curl__ (https://curl.haxx.se/download.html). Here are s
         └── RacketSport
             ├── TennisSport
             │   └── TennisGameService.groovy    (1)
-            └── RacketGameService.groovy        (3)
+            └── RacketGameService.groovy        (2)
 
 
 1.  **TennisGameService** Calculates the score and the progress of a tennis match. It extends RacketGameService.
@@ -75,28 +76,44 @@ Again, the idea is to be able to represent any racket match, only a Tennis Match
    
        groovy
            ├── RacketSport
-           │   ├── RacketException.groovy
-           │   ├── RacketGame.groovy
-           │   └── Scoreboard.groovy
+           │   ├── RacketGame.groovy        (1)
+           │   └── Scoreboard.groovy        (2)
+           │   ├── RacketException.groovy   (3)
            └── utils
-               └── MapUtils.groovy
+               └── MapUtils.groovy          (4)
         
 1. RacketGame: Interface with methods to calculate score progress in 'any' racket game
 1. Scoreboard: Interface which only contains a method _point()_ which is called within the controller
+1. RacketException: Exception to handle own errors and not to delegate in GORM configuration, just something simple
 1. MapUtils: Utility class which work with maps<Integer, Integer>
-   
+  
+### SRC/TEST
+Contains SOME unit test, mainly to test score progress of the TennisGameService. 
+ 
+       groovy
+           └── RacketSport
+               ├── TennisSport
+               │   └── TennisGameServiceSpec.groovy (1)
+               ├── PlayerSpec.groovy
+               ├── PointSpec.groovy
+               └── ScoreboardControllerSpec.groovy
+               
+1. TennisGameServiceSpec: Test the TennisGameService to verify score progress
            
 ## The TODOs
 
-* Internationalization (i18n) 
+* Create a PingPong from TennisGameService (new controller and UI)
 
 * Persistence 
 
 * Session management
 
+* Internationalization (i18n) 
+
 * Improve Error handling
 
-* Create a PingPong from TennisGameService
+
+...
 
 <!--
     http-server -c-1 -o --cors
